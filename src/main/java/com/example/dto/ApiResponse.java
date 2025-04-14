@@ -10,13 +10,13 @@ import lombok.Setter;
 @NoArgsConstructor 
 @AllArgsConstructor
 
-// ApiResponse wrapper. Can be used to return status and error information in case of service method failure, or an object in case of service method success.
-/* 
-Really wanted to use this for all of the methods to standardize return output but after figuring it out locally in my IDE and then getting it into gitpod, I realized the tests were 
-read-only and I couldn't modify them to extract the data field from my ApiResponse DTO. I had to revert everything back to returning account/message objects, primitives,
-or null. I eventually switched to using .build() to return an empty response body instead of null. Couldn't bear to delete the ApiResponse wrapper though because I spent 
-much time on it. It lives here for future use :)
-*/ 
+// ApiResponse wrapper for standardizing response structure (data, status, success flag, and message).
+/*
+Originally intended to wrap all controller responses with this DTO for consistent output formatting. 
+However, due to test suite restrictions (read-only, expecting raw entity/primitives), it failed in Gitpod.
+Reverted back to entities/primitives to maintain compatibility, but preserved the class for future use or expansion -- and was too proud of it to delete :)
+*/
+
 public class ApiResponse<T> {
 
     private T data;
